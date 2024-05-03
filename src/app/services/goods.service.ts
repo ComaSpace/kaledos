@@ -52,17 +52,17 @@ export class GoodsService {
   }
 
   public loadRecord(id:String){
-    return this.http.get<Good>("https://kaledos-7fc07-default-rtdb.europe-west1.firebasedatabase.app/goods/"+id+".json");
+    return this.http.get<Good>("https://kaledos-539d5-default-rtdb.europe-west1.firebasedatabase.app/goods/"+id+".json");
   }
   
 
-  public updateRecord(item:Good ){
-    return this.http.patch("https://kaledos-7fc07-default-rtdb.europe-west1.firebasedatabase.app/goods/"+item.id+".json", item);
+  public updateRecord(item:Good){
+    return this.http.patch("https://kaledos-539d5-default-rtdb.europe-west1.firebasedatabase.app/goods/"+item.id+".json", item);
 
   }
 
   public deleteRecord(id:string){
-    return this.http.delete("https://kaledos-7fc07-default-rtdb.europe-west1.firebasedatabase.app/goods/"+id+".json").pipe(
+    return this.http.delete("https://https://kaledos-539d5-default-rtdb.europe-west1.firebasedatabase.app/goods/"+id+".json").pipe(
       tap(()=>this.onGoodsCountChange.emit())
     );
   }

@@ -4,7 +4,7 @@ import { GoodsService } from '../../services/goods.service';
 import { Good } from '../../models/good';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { LoadingComponent } from '../loading/loading.comonents';
+import { LoadingComponent } from '../loading/loading.component';
 import { ErrorComponent } from '../error/error.component';
 
 @Component({
