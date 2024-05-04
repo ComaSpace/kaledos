@@ -18,7 +18,7 @@ export class GoodsService {
 
   public addGood(item:Good){
     this.goods.push(item);
-    return this.http.post("https://kaledos-7fc07-default-rtdb.europe-west1.firebasedatabase.app/goods.json",item).pipe(
+    return this.http.post("https://kaledos-539d5-default-rtdb.europe-west1.firebasedatabase.app/goods.json",item).pipe(
       tap(()=>this.onGoodsCountChange.emit())
     );
   }
@@ -26,7 +26,7 @@ export class GoodsService {
   public loadData(){
     // Gauname observable
     return this.http
-      .get<{[key:string]:Good}>("https://kaledos-7fc07-default-rtdb.europe-west1.firebasedatabase.app/goods.json")
+      .get<{[key:string]:Good}>("https://kaledos-539d5-default-rtdb.europe-west1.firebasedatabase.app/goods.json")
       .pipe( 
           map( (data):Good[]=>{
             let goods=[];
@@ -62,7 +62,7 @@ export class GoodsService {
   }
 
   public deleteRecord(id:string){
-    return this.http.delete("https://https://kaledos-539d5-default-rtdb.europe-west1.firebasedatabase.app/goods/"+id+".json").pipe(
+    return this.http.delete("https://kaledos-539d5-default-rtdb.europe-west1.firebasedatabase.app/goods/"+id+".json").pipe(
       tap(()=>this.onGoodsCountChange.emit())
     );
   }
