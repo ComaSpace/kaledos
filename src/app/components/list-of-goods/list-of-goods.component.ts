@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { GoodsService } from '../../services/goods.service';
 import { Good } from '../../models/good';
@@ -6,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LoadingComponent } from '../loading/loading.component';
 import { ErrorComponent } from '../error/error.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-list-of-goods',
@@ -22,9 +22,10 @@ export class ListOfGoodsComponent {
   
   
   
-  public constructor(private goodsService:GoodsService){
+  public constructor(private goodsService:GoodsService, private authService:AuthService){
     //this.goods=goodsService.goods;
     this.loadData();
+    //this.authService.register("g.gricius@ituostas.lt","LabasPasauli",false);
   }
 
   private loadData(){

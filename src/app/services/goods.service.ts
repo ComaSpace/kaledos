@@ -2,6 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Good } from '../models/good';
 import { HttpClient } from '@angular/common/http';
 import { catchError, delay, map, tap } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,7 @@ export class GoodsService {
   public goods:Good[]=[];
 
   public onGoodsCountChange=new EventEmitter();
+  public onStatusChange=new EventEmitter<Number>();
 
   constructor(private http:HttpClient) { }
 
@@ -34,9 +36,16 @@ export class GoodsService {
               goods.push({...data[x], id:x });
             }
             this.goods=goods;
+            this.onStatusChange.emit(0);
             
             return goods;
           } ))
+          .pipe(
+        catchError( (er,c)=>{ 
+          this.onStatusChange.emit(1);
+          throw "Klaida";
+        })
+      )   
           /*
       .pipe(
           tap((data)=>{
